@@ -48,7 +48,7 @@ class _LoginPageState extends State<LoginPage> {
                 decoration: const InputDecoration(labelText: 'Email',border: OutlineInputBorder(),prefixIcon: Icon(Icons.email)),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-                    return 'Please enter your email';
+                    return 'Email tidak boleh kosong';
                   }
                   return null;
                 },
@@ -65,7 +65,7 @@ class _LoginPageState extends State<LoginPage> {
                 obscureText: true,
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-                    return 'Please enter your password';
+                    return 'Password tidak boleh kosong';
                   }
                   return null;
                 },
