@@ -116,7 +116,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             ),
                             SizedBox(height: 8),
                             TextFormField(
-                              obscureText: true,
+                              controller: noHpController,
                               decoration: const InputDecoration(
                                 border: OutlineInputBorder(
                                   borderRadius:BorderRadius.all(Radius.circular(18))),
@@ -192,7 +192,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             SizedBox(height: 8),
                             TextFormField(
                               controller: konfirmasiController,
-                              obscureText: true,
+                              obscureText: _obscureConfirmPassword,
                               decoration: InputDecoration(
                               border: const OutlineInputBorder(
                               borderRadius:BorderRadius.all(Radius.circular(18))),
@@ -247,10 +247,10 @@ class _RegisterPageState extends State<RegisterPage> {
                           ),
                         );
                         // Pindah ke halaman login setelah registrasi berhasil
-                    // Navigator.pushReplacement(
-                    //   context,
-                    //   MaterialPageRoute(builder: (context) => const HomePage()),
-                    // );
+                      Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(builder: (context) => const LoginPage()),
+                    );
                       }
                     }
                   }, 
