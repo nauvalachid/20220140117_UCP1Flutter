@@ -11,6 +11,8 @@ class _LoginPageState extends State<LoginPage> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
+  bool _obscurePassword = true;
+
    @override
   void initState() {
     super.initState();
@@ -45,7 +47,12 @@ class _LoginPageState extends State<LoginPage> {
                SizedBox(height: 16),
               TextFormField(
                 controller: emailController,
-                decoration: const InputDecoration(labelText: 'Email',border: OutlineInputBorder(),prefixIcon: Icon(Icons.email)),
+                decoration: const InputDecoration(
+                  labelText: 'Email',
+                  border: OutlineInputBorder(
+                    borderRadius:BorderRadius.all(Radius.circular(18)),
+                  ),
+                  prefixIcon: Icon(Icons.email)),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Email tidak boleh kosong';
@@ -56,13 +63,30 @@ class _LoginPageState extends State<LoginPage> {
                 SizedBox(height: 16),
                  const Text(
                 'Password',
-                style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+                style: TextStyle(fontSize: 14, 
+                fontWeight: FontWeight.bold),
               ),
                 SizedBox(height: 16),
                TextFormField(
                 controller: passwordController,
-                decoration: const InputDecoration(labelText: 'Password',border: OutlineInputBorder(),prefixIcon: Icon(Icons.lock)),
-                obscureText: true,
+                 obscureText: _obscurePassword,
+              decoration: InputDecoration(
+                labelText: 'Password',
+                border: const OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(18)),
+                ),
+                prefixIcon: const Icon(Icons.lock),
+                suffixIcon: IconButton(
+                  icon: Icon(
+                    _obscurePassword ? Icons.visibility_off : Icons.visibility,
+                  ),
+                  onPressed: () {
+                    setState(() {
+                      _obscurePassword = !_obscurePassword; // Toggle visibility
+                    });
+                  },
+                ),
+              ),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Password tidak boleh kosong';
@@ -70,23 +94,33 @@ class _LoginPageState extends State<LoginPage> {
                   return null;
                 },
               ),
+              SizedBox(height: 30),
                Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                  children: [
                    ElevatedButton(
                     onPressed: () {
                     },
-                    child: Text('Login'),
+                    style: ElevatedButton.styleFrom(
+                        minimumSize: Size(430, 50), 
+                      backgroundColor: const Color.fromARGB(255, 231, 80, 39),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                      padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 15),
+                    ),
+                    child: Text('Masuk'),
                                  ),
                  ],
                ),
+               SizedBox(height: 16),
                Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                  children: [
                    TextButton(
                     onPressed: () {
                     },
-                    child: Text('Belum punya akun? Daftar'),
+                    child: Text('Belum memiliki akun? Silahkan Daftar disini!'),
                                  ),
                  ],
                ),
