@@ -34,13 +34,17 @@ class _RegisterPageState extends State<RegisterPage> {
                    const Text(
                     'Nama Lengkap',
                     style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
-                                 ),
+                    ),
                  ],
                ),
               SizedBox(height: 16),
               TextFormField(
                 controller: namaController,
-                decoration: const InputDecoration(labelText: 'Nama Lengkap',border: OutlineInputBorder(),prefixIcon: Icon(Icons.person)),
+                decoration: const InputDecoration(
+                  labelText: 'Nama Lengkap',
+                  border: OutlineInputBorder(
+                  borderRadius:BorderRadius.all(Radius.circular(18))),
+                  prefixIcon: Icon(Icons.person)),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Nama lengkap tidak boleh kosong';
@@ -51,31 +55,130 @@ class _RegisterPageState extends State<RegisterPage> {
               SizedBox(height: 16),
                Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.start,
                  children: [
                   Expanded(
-                    child: ListTile(
-                      title: Text('Email'),
-                      subtitle: TextFormField(decoration: const InputDecoration(
-                        border: OutlineInputBorder(
-                          borderRadius:BorderRadius.all(Radius.circular(8)),),
-                          hintText: 'Email',
-                          ),
-                    ),),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text(
+                          'Email',
+                          style: TextStyle(
+                            fontSize: 14, 
+                            fontWeight: FontWeight.bold),
+                        ),
+                        SizedBox(height: 8),
+                        TextFormField(
+                          controller: emailController,
+                          decoration: const InputDecoration(
+                            labelText: 'Email',
+                            border: OutlineInputBorder(
+                              borderRadius:BorderRadius.all(Radius.circular(18))),
+                            prefixIcon: Icon(Icons.email)),
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Email tidak boleh kosong';
+                            }
+                            return null;
+                          },
+                        ),
+                      ],
+                    ),
                   ),
-                  SizedBox(width: 5),
-                  Expanded(child: ListTile(
-                    title: Text('Password'),
-                    leading: Icon(Icons.lock),
-                    subtitle: TextFormField(decoration: const InputDecoration(
-                      border: OutlineInputBorder(
-                        borderRadius:BorderRadius.all(Radius.circular(8))),
-                          hintText: 'Password',
-                          ),
-                    ),),
+                  SizedBox(width: 16),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text(
+                          'No.HP',
+                          style: TextStyle(
+                            fontSize: 14, 
+                            fontWeight: FontWeight.bold),
+                        ),
+                        SizedBox(height: 8),
+                        TextFormField(
+                          obscureText: true,
+                          decoration: const InputDecoration(
+                            labelText: 'No.HP',
+                            border: OutlineInputBorder(
+                              borderRadius:BorderRadius.all(Radius.circular(18))),
+                            prefixIcon: Icon(Icons.phone_android)),
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Password tidak boleh kosong';
+                            }
+                            return null;
+                          },
+                        ),
+                      ],
+                    ),
                   ),
-                 ],
-               ),
+                ],
+              ),
+                SizedBox(height: 16),
+               Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                 children: [
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text(
+                          'Password',
+                          style: TextStyle(
+                            fontSize: 14, 
+                            fontWeight: FontWeight.bold),
+                        ),
+                        SizedBox(height: 8),
+                        TextFormField(
+                          controller: emailController,
+                          decoration: const InputDecoration(
+                            labelText: 'Password',
+                            border: OutlineInputBorder(
+                              borderRadius:BorderRadius.all(Radius.circular(18))),
+                            prefixIcon: Icon(Icons.lock)),
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Password tidak boleh kosong';
+                            }
+                            return null;
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(width: 16),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text(
+                          'Konfirmasi Password',
+                          style: TextStyle(
+                            fontSize: 14, 
+                            fontWeight: FontWeight.bold),
+                        ),
+                        SizedBox(height: 8),
+                        TextFormField(
+                          obscureText: true,
+                          decoration: const InputDecoration(
+                            labelText: 'Konfirmasi Password',
+                            border: OutlineInputBorder(
+                              borderRadius:BorderRadius.all(Radius.circular(18))),
+                            prefixIcon: Icon(Icons.lock)),
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Password tidak boleh kosong';
+                            }
+                            return null;
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(height: 16),
               ElevatedButton(onPressed: () {}, child: Text('Register')),
               TextButton(
                 onPressed: () {
