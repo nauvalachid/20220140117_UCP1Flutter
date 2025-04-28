@@ -271,7 +271,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        'Belum memiliki akun? ',
+                        'Sudah memiliki akun? ',
                         style: TextStyle(
                           fontSize: 14,
                           color: Colors.black,
@@ -285,7 +285,7 @@ class _RegisterPageState extends State<RegisterPage> {
                           );
                         },
                         child: Text(
-                          'Daftar disini!',
+                          'Login disini!',
                           style:TextStyle(
                             fontSize: 14,
                             color: const Color.fromARGB(255, 231, 80, 39),

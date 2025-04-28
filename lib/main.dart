@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ucp1/homepage.dart';
 import 'package:ucp1/login_page.dart';
 import 'package:ucp1/register_page.dart';
 
@@ -32,7 +33,7 @@ class MyApp extends StatelessWidget {
         // tested with just a hot reload.
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: const RegisterPage(),
+      home: const LoginPage(),
     );
   }
 }
