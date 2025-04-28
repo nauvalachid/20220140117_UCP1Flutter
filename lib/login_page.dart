@@ -104,13 +104,17 @@ class _LoginPageState extends State<LoginPage> {
                     style: ElevatedButton.styleFrom(
                         minimumSize: Size(430, 50), 
                       backgroundColor: const Color.fromARGB(255, 231, 80, 39),
+                      foregroundColor: Colors.white,
+                      textStyle: const TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(15),
                       ),
                       padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 15),
                     ),
                     child: Text('Masuk'),
-                                 ),
+                    ),
                  ],
                ),
                SizedBox(height: 16),
@@ -121,7 +125,7 @@ class _LoginPageState extends State<LoginPage> {
                     onPressed: () {
                     },
                     child: Text('Belum memiliki akun? Silahkan Daftar disini!'),
-                                 ),
+                    ),
                  ],
                ),
             ],
