@@ -203,7 +203,7 @@ class _DataBarangPageState extends State<DataBarangPage> {
                                   hintText: 'Jumlah barang'),
                               validator: (value) {
                                 if (value == null || value.isEmpty) {
-                                  return ' tidak boleh kosong';
+                                  return ' Jumlah barang tidak boleh kosong';
                                 }
                                 return null;
                               },
@@ -253,7 +253,7 @@ class _DataBarangPageState extends State<DataBarangPage> {
                               },
                               validator: (value) {
                                 if (value == null || value.isEmpty) {
-                                  return 'Tidak boleh kosong';
+                                  return 'Jumlah Satuan Tidak boleh kosong';
                                 }
                                 return null;
                               },
