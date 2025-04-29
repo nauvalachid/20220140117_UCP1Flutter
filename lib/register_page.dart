@@ -265,7 +265,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             borderRadius: BorderRadius.circular(15),
                           ),
                           padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 15),
-                        ),child: Text('Register')),
+                        ),child: Text('Daftar')),
                 SizedBox(height: 16),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
