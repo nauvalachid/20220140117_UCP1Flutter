@@ -119,7 +119,6 @@ class _DataPiketPageState extends State<DataPiketPage> {
                     controller: namaController,
                     readOnly: true,
                     decoration: InputDecoration(
-                      hintText: 'Masukkan nama anggota',
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(18),
                       ),
