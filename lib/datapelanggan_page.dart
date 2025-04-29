@@ -41,7 +41,7 @@ Widget build(BuildContext context) {
       key: _formKey,
       child: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(20.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
@@ -221,12 +221,12 @@ Widget build(BuildContext context) {
                       ),
                     ],
                   ),
-                  SizedBox(height: 16),
+                  SizedBox(height: 100),
                   ElevatedButton(onPressed: () {
                     if (_formKey.currentState!.validate());
                   }, 
                    style: ElevatedButton.styleFrom(
-                          minimumSize: Size(430, 50), 
+                          fixedSize: Size(400, 60), 
                           backgroundColor: const Color.fromARGB(255, 231, 80, 39),
                           foregroundColor: Colors.white,
                           textStyle: const TextStyle(
@@ -237,12 +237,12 @@ Widget build(BuildContext context) {
                           ),
                           padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 15),
                         ),child: Text('Simpan')),
-                  SizedBox(height: 16),
+                  SizedBox(height: 40),
                   ElevatedButton(onPressed: () {
                      _formKey.currentState?.reset();
                   }, 
                    style: ElevatedButton.styleFrom(
-                          minimumSize: Size(430, 50), 
+                          fixedSize: Size(400, 60), 
                           backgroundColor: const Color.fromARGB(255, 255, 255, 255),
                           foregroundColor: const Color.fromARGB(255, 231, 80, 39),
                           textStyle: const TextStyle(
