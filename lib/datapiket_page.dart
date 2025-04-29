@@ -18,6 +18,8 @@ class _DataPiketPageState extends State<DataPiketPage> {
 
   DateTime? _selectedDate;
   bool _isDateSelected = true;
+  bool _isTugasValid = true;
+
   List<Map<String, String>> tugasList = [];
 
   @override
@@ -45,6 +47,11 @@ class _DataPiketPageState extends State<DataPiketPage> {
   }
 
   void _addTugas() {
+    setState(() {
+    _isDateSelected = _selectedDate != null;
+    _isTugasValid = tugasController.text.isNotEmpty;
+  });
+  
     if (tugasController.text.isNotEmpty && _selectedDate != null) {
       setState(() {
         tugasList.add({
@@ -57,15 +64,8 @@ class _DataPiketPageState extends State<DataPiketPage> {
         tanggalController.clear();
         _selectedDate = null;
       });
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Tugas berhasil ditambahkan!')),
-      );
-    } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Pastikan semua data terisi dengan benar!')),
-      );
-    }
   }
+}
 
   void _navigateToDetail(Map<String, String> tugasData) {
     Navigator.push(
@@ -139,15 +139,30 @@ class _DataPiketPageState extends State<DataPiketPage> {
                       hintText: 'Pilih tanggal piket',
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(18),
+                        borderSide: BorderSide(
+                        color: _isDateSelected ? Colors.grey : Colors.red,
+                        ),
                       ),
                       prefixIcon: const Icon(Icons.calendar_today),
+                      focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(18),
+                      borderSide: BorderSide(
+                      color: _isDateSelected ? Colors.grey : Colors.red,
+                      ),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(18),
+                    borderSide: BorderSide(
+                    color: _isDateSelected ? Colors.grey : Colors.red,  
+                      ),
                     ),
                   ),
+                ),
                   if (!_isDateSelected)
                     const Padding(
                       padding: EdgeInsets.only(top: 8),
                       child: Text(
-                        "Please select a date",
+                        "Tanggal tidak boleh kosong",
                         style: TextStyle(color: Colors.red),
                       ),
                     ),
@@ -160,14 +175,42 @@ class _DataPiketPageState extends State<DataPiketPage> {
                   Row(
                     children: [
                       Expanded(
-                        child: TextFormField(
-                          controller: tugasController,
-                          decoration: InputDecoration(
-                            hintText: 'Tugas Piket',
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(18),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            TextFormField(
+                              controller: tugasController,
+                              decoration: InputDecoration(
+                                hintText: 'Tugas Piket',
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(18),
+                                  borderSide: BorderSide(
+                                    color: _isTugasValid ? Colors.grey : Colors.red,
+                                  ),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(18),
+                                  borderSide: BorderSide(
+                                    color: _isTugasValid ? Colors.grey : Colors.red,
+                                  ),
+                                ),
+                                enabledBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(18),
+                                  borderSide: BorderSide(
+                                    color: _isTugasValid ? Colors.grey : Colors.red,
+                                  ),
+                                ),
+                              ),
                             ),
-                          ),
+                            if (!_isTugasValid)
+                              const Padding(
+                                padding: EdgeInsets.only(top: 8),
+                                child: Text(
+                                  "Tugas tidak boleh kosong",
+                                  style: TextStyle(color: Colors.red),
+                                ),
+                              ),
+                          ],
                         ),
                       ),
                       const SizedBox(width: 40),
