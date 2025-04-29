@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ucp1/detailpelanggan_page.dart';
 
 class DataPelangganPage extends StatefulWidget {
   const DataPelangganPage({super.key});
@@ -222,9 +223,23 @@ Widget build(BuildContext context) {
                     ],
                   ),
                   SizedBox(height: 100),
-                  ElevatedButton(onPressed: () {
-                    if (_formKey.currentState!.validate());
-                  }, 
+                  ElevatedButton(
+                    onPressed: () {
+                    if (_formKey.currentState!.validate()){
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => DetailPelangganPage(
+                          nama: namaController.text,
+                          email: emailController.text,
+                          noHP: noHPController.text,
+                          alamat: alamatController.text,
+                          provinsi: provinsiController.text,
+                          kodepos: kodeController.text,
+                        ),
+                      ),
+                    );
+                  }},
                    style: ElevatedButton.styleFrom(
                           fixedSize: Size(400, 60), 
                           backgroundColor: const Color.fromARGB(255, 231, 80, 39),
@@ -236,7 +251,9 @@ Widget build(BuildContext context) {
                             borderRadius: BorderRadius.circular(15),
                           ),
                           padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 15),
-                        ),child: Text('Simpan')),
+                        ),
+                        child: const Text('Simpan'),
+                  ),
                   SizedBox(height: 40),
                   ElevatedButton(onPressed: () {
                      _formKey.currentState?.reset();
