@@ -44,6 +44,22 @@ class _DataBarangPageState extends State<DataBarangPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+         title: const Text(
+          'Pendataan Barang',
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
+          ),
+        ),
+        centerTitle: true,
+        backgroundColor: const Color(0xFFE75027),
+        toolbarHeight: 80,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back, color: Colors.white), // << ini warna putih
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
       ),
       body: Center(
       ),
