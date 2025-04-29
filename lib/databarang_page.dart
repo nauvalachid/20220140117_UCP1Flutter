@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:ucp1/detailbarang_page.dart';
 
 class DataBarangPage extends StatefulWidget {
   const DataBarangPage({super.key});
@@ -269,19 +270,20 @@ class _DataBarangPageState extends State<DataBarangPage> {
                       ElevatedButton(
                         onPressed: () {
                         if (_formKey.currentState!.validate()){
-                        // Navigator.push(
-                        //   context,
-                        //   MaterialPageRoute(
-                        //     builder: (context) => DetailPelangganPage(
-                        //       nama: namaController.text,
-                        //       email: emailController.text,
-                        //       noHP: noHPController.text,
-                        //       alamat: alamatController.text,
-                        //       provinsi: provinsiController.text,
-                        //       kodepos: kodeController.text,
-                        //     ),
-                        //   ),
-                        // );
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => DetailBarangPage(
+                              tanggal: tanggalController.text,
+                              jenistransaksi: jenistransaksiController.text,
+                              jenisbarang: jenisbarangController.text,
+                              jumlahbarang: jumlahController.text,
+                              jenisharga: hargaController.text,
+                              totalharga: NumberFormat.currency(locale: 'id', symbol: 'Rp ', decimalDigits: 0)
+                                  .format(hitungTotalHarga()),
+                            ),
+                          ),
+                        );
                       }},
                        style: ElevatedButton.styleFrom(
                               fixedSize: Size(425, 60), 
