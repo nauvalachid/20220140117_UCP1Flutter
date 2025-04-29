@@ -23,6 +23,23 @@ class _DataBarangPageState extends State<DataBarangPage> {
     super.initState();
   }
 
+  void _pickDate() async {
+    DateTime? pickedDate = await showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(2000),
+      lastDate: DateTime(2101),
+    );
+
+    if (pickedDate != null) {
+      setState(() {
+        _selectedDate = pickedDate;
+        tanggalController.text = DateFormat('dd-MM-yyyy').format(pickedDate);
+        _isDateSelected = true;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
