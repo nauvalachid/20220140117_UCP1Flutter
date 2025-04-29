@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ucp1/databarang_page.dart';
 import 'package:ucp1/datapelanggan_page.dart';
 import 'package:ucp1/datapiket_page.dart';
 
@@ -152,6 +153,12 @@ class _HomePageState extends State<HomePage> {
                     ),
                     child: InkWell(
                       onTap: () {
+                         Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => DataBarangPage()
+                                ),
+                              );
                       },
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
