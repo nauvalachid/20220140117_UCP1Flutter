@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ucp1/homepage.dart';
 
 class DetailPelangganPage extends StatelessWidget {
   final String alamat;
@@ -69,7 +70,15 @@ class DetailPelangganPage extends StatelessWidget {
               width: double.infinity,
               height: 55,
               child: ElevatedButton(
-                onPressed: () => Navigator.pop(context),
+                onPressed: () {
+                  Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => HomePage(email: email), 
+                    ),
+                    (route) => false, 
+                  );
+                },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color(0xFFE75027),
                   shape: RoundedRectangleBorder(
