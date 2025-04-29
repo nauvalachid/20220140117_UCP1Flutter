@@ -9,6 +9,8 @@ class DataBarangPage extends StatefulWidget {
 }
 
 class _DataBarangPageState extends State<DataBarangPage> {
+  final _formKey = GlobalKey<FormState>();
+
   final TextEditingController jenisbarangController = TextEditingController();
   final TextEditingController tanggalController = TextEditingController();
   final TextEditingController jenistransaksiController = TextEditingController();
@@ -112,6 +114,65 @@ class _DataBarangPageState extends State<DataBarangPage> {
                         style: TextStyle(color: Colors.red),
                       ),
                     ),
+                    const SizedBox(height: 16),
+                  DropdownButtonFormField<String>(
+                    value: jenistransaksiController.text.isNotEmpty
+                        ? jenistransaksiController.text
+                        : null,
+                    items: ['Barang Masuk', 'Barang Keluar'].map((String value) {
+                      return DropdownMenuItem<String>(
+                        value: value,
+                        child: Text(value),
+                      );
+                    }).toList(),
+                    onChanged: (newValue) {
+                      setState(() {
+                        jenistransaksiController.text = newValue!;
+                      });
+                    },
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Pilih jenis transaksi';
+                      }
+                      return null;
+                    },
+                    decoration: InputDecoration(
+                      labelText: 'Jenis Transaksi',
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(18),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                   DropdownButtonFormField<String>(
+                    value: jenisbarangController.text.isNotEmpty
+                        ? jenisbarangController.text
+                        : null,
+                    items: ['Carrier', 'Sleeping Bag','Tenda','Sepatu'].map((String value) {
+                      return DropdownMenuItem<String>(
+                        value: value,
+                        child: Text(value),
+                      );
+                    }).toList(),
+                    onChanged: (newValue) {
+                      setState(() {
+                        jenisbarangController.text = newValue!;
+                      });
+                    },
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Pilih jenis barang';
+                      }
+                      return null;
+                    },
+                    decoration: InputDecoration(
+                      labelText: 'Jenis Barang',
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(18),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 16),
                   ],
                 ),
               )
