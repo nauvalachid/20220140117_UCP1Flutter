@@ -61,8 +61,63 @@ class _DataBarangPageState extends State<DataBarangPage> {
           },
         ),
       ),
-      body: Center(
-      ),
-    );
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          children: [
+            Form(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text(
+                    'Tanggal Transaksi',
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  const SizedBox(height: 8),
+                  TextFormField(
+                    controller: tanggalController,
+                    readOnly: true,
+                    onTap: _pickDate,
+                    decoration: InputDecoration(
+                        hintText: 'Pilih Tanggal',
+                         border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(18),
+                        borderSide: BorderSide(
+                        color: _isDateSelected ? Colors.grey : Colors.red,
+                        ),
+                      ),
+                      prefixIcon: const Icon(Icons.calendar_today),
+                      focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(18),
+                      borderSide: BorderSide(
+                      color: _isDateSelected ? Colors.grey : Colors.red,
+                      ),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(18),
+                    borderSide: BorderSide(
+                    color: _isDateSelected ? Colors.grey : Colors.red,  
+                    ),
+                  ),
+                ),
+              ),
+                  if (!_isDateSelected)
+                    const Padding(
+                      padding: EdgeInsets.only(top: 8),
+                      child: Text(
+                        "Tanggal tidak boleh kosong",
+                        style: TextStyle(color: Colors.red),
+                      ),
+                    ),
+                  ],
+                ),
+              )
+            ],
+          ),
+        ),
+      );
+    }
   }
-}
