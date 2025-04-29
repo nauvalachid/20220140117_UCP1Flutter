@@ -173,12 +173,94 @@ class _DataBarangPageState extends State<DataBarangPage> {
                     ),
                   ),
                   const SizedBox(height: 16),
-                  ],
-                ),
-              )
-            ],
-          ),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                     children: [
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const Text(
+                              'Jumlah Barang',
+                              style: TextStyle(
+                                fontSize: 14, 
+                                fontWeight: FontWeight.bold),
+                            ),
+                            SizedBox(height: 8),
+                            TextFormField(
+                              controller: jumlahController,
+                              decoration: const InputDecoration(
+                                border: OutlineInputBorder(
+                                  borderRadius:BorderRadius.all(Radius.circular(18))),
+                                  hintText: 'Jumlah barang'),
+                              validator: (value) {
+                                if (value == null || value.isEmpty) {
+                                  return ' tidak boleh kosong';
+                                }
+                                return null;
+                              },
+                            ),
+                          ],
+                        ),
+                      ),
+                      const SizedBox(width: 16),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const Text(
+                              'Harga Satuan',
+                              style: TextStyle(
+                                  fontSize: 14, fontWeight: FontWeight.bold),
+                            ),
+                            const SizedBox(height: 8),
+                            TextFormField(
+                              controller: hargaController,
+                              keyboardType: TextInputType.number,
+                              decoration: const InputDecoration(
+                                border: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(18)),
+                                ),
+                                hintText: 'Rp. 0',
+                              ),
+                              onChanged: (value) {
+                                String newValue =
+                                    value.replaceAll(RegExp(r'[^0-9]'), '');
+                                if (newValue.isEmpty) {
+                                  hargaController.text = '';
+                                  return;
+                                }
+                                final formatter = NumberFormat.currency(
+                                    locale: 'id',
+                                    symbol: 'Rp ',
+                                    decimalDigits: 0);
+                                String formatted =
+                                    formatter.format(int.parse(newValue));
+                                hargaController.value = TextEditingValue(
+                                  text: formatted,
+                                  selection: TextSelection.collapsed(
+                                      offset: formatted.length),
+                                );
+                              },
+                              validator: (value) {
+                                if (value == null || value.isEmpty) {
+                                  return 'Tidak boleh kosong';
+                                }
+                                return null;
+                              },
+                            ),
+                          ],
+                        ),
+                      ),
+                     ],
+                  ),
+                ],
+              ),
+            ),
+          ],
         ),
-      );
-    }
+      ),
+    );
   }
+}
