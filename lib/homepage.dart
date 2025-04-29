@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:ucp1/databarang_page.dart';
 import 'package:ucp1/datapelanggan_page.dart';
 import 'package:ucp1/datapiket_page.dart';
+import 'package:ucp1/login_page.dart';
 
 class HomePage extends StatefulWidget {
   final String email;
@@ -50,6 +51,12 @@ class _HomePageState extends State<HomePage> {
                 color: Colors.white,
                 size: 30,),
               onPressed: () {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const LoginPage(),
+                  ),
+                );
               },
             ),
           ),
