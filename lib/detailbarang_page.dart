@@ -9,7 +9,7 @@ class DetailBarangPage extends StatelessWidget {
   final String jenisharga;
   final String totalharga;
 
-   const DetailBarangPage({
+  const DetailBarangPage({
     Key? key,
     required this.tanggal,
     required this.jenistransaksi,
@@ -19,7 +19,6 @@ class DetailBarangPage extends StatelessWidget {
     required this.totalharga,
   }) : super(key: key);
 
-   // Fungsi untuk mengubah format tanggal
   String formatTanggal(String tanggalAsli) {
     try {
       DateTime parsedDate = DateFormat('dd-MM-yyyy').parse(tanggalAsli);
@@ -29,16 +28,23 @@ class DetailBarangPage extends StatelessWidget {
     }
   }
 
-  Widget buildDetailRow(String label, String value) {
+  Widget buildDetailRow(String title, String value) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 6.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(label,
-              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
-          Text(value,
-              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w600)),
+          Text(
+            title,
+            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
+          ),
+          Flexible(
+            child: Text(
+              value,
+              textAlign: TextAlign.right,
+              style: const TextStyle(fontSize: 14),
+            ),
+          ),
         ],
       ),
     );
@@ -47,7 +53,64 @@ class DetailBarangPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
+      backgroundColor: const Color(0xFFFEF7F5),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 48),
+        child: Column(
+          children: [
+            Container(
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: Colors.green.withOpacity(0.1),
+            ),
+            padding: const EdgeInsets.all(20),
+            child: const Icon(
+              Icons.check_circle,
+              color: Colors.green,
+              size: 80,
+            ),
+          ),
+            const SizedBox(height: 16),
+            Text(
+              'Data Berhasil Disimpan',
+            ),
+            const SizedBox(height: 32),
+            buildDetailRow('Tanggal', formatTanggal(tanggal)),
+            const Divider(),
+            buildDetailRow('Jenis Transaksi', jenistransaksi),
+            const Divider(),
+            buildDetailRow('Jenis Barang', jenisbarang),
+            const Divider(),
+            buildDetailRow('Jumlah Barang', jumlahbarang),
+            const Divider(),
+            buildDetailRow('Jenis Harga Satuan', jenisharga),
+            const Divider(),
+            buildDetailRow('Total Harga', totalharga),
+            const Spacer(),
+            SizedBox(
+              width: double.infinity,
+              child: ElevatedButton(
+                onPressed: () => Navigator.pop(context),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: const Color.fromARGB(255, 231, 80, 39),
+                  padding: const EdgeInsets.symmetric(vertical: 16),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(18),
+                  ),
+                ),
+                child: Text(
+                  'Selesai',
+                  style: const TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
