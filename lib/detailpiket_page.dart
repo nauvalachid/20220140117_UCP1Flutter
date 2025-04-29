@@ -27,9 +27,9 @@ class DetailPiketPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          'Detail Menyapu',
-          style: TextStyle(
+        title: Text(
+          'Detail ${tugas}',
+          style: const TextStyle(
             fontWeight: FontWeight.bold,
             color: Colors.white,
           ),
