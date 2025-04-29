@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:ucp1/datapiket_page.dart';
+import 'package:ucp1/detailpiket_page.dart';
 import 'package:ucp1/homepage.dart';
 import 'package:ucp1/login_page.dart';
 import 'package:ucp1/register_page.dart';
+import 'package:intl/date_symbol_data_local.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() {  initializeDateFormatting('id_ID', null).then((_) {
+    runApp(const MyApp());
+  });
 }
 
 class MyApp extends StatelessWidget {

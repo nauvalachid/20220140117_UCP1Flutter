@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ucp1/login_page.dart';
+import 'package:ucp1/datapiket_page.dart';
 
 class HomePage extends StatefulWidget {
   final String email;
@@ -53,10 +53,11 @@ class _HomePageState extends State<HomePage> {
           ),
         ],
       ),
-      body: Center(
+      body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
+            const SizedBox(height: 16),
             Image.asset(
               'assets/images/iklan.jpeg',
               height: 300,
@@ -79,6 +80,12 @@ class _HomePageState extends State<HomePage> {
                           ),
                           child: InkWell(
                             onTap: () {
+                                Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => DataPiketPage(email: widget.email)
+                                ),
+                              );
                             },
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
