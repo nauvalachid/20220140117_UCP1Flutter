@@ -11,6 +11,15 @@ class DataBarangPage extends StatefulWidget {
 class _DataBarangPageState extends State<DataBarangPage> {
   final _formKey = GlobalKey<FormState>();
 
+  int hitungTotalHarga() {
+  final jumlah = int.tryParse(jumlahController.text) ?? 0;
+
+  final hargaText = hargaController.text.replaceAll(RegExp(r'[^0-9]'), '');
+  final harga = int.tryParse(hargaText) ?? 0;
+
+  return jumlah * harga;
+}
+
   final TextEditingController jenisbarangController = TextEditingController();
   final TextEditingController tanggalController = TextEditingController();
   final TextEditingController jenistransaksiController = TextEditingController();
@@ -68,6 +77,7 @@ class _DataBarangPageState extends State<DataBarangPage> {
         child: Column(
           children: [
             Form(
+              key: _formKey,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -105,15 +115,12 @@ class _DataBarangPageState extends State<DataBarangPage> {
                     ),
                   ),
                 ),
-              ),
-                  if (!_isDateSelected)
-                    const Padding(
-                      padding: EdgeInsets.only(top: 8),
-                      child: Text(
-                        "Tanggal tidak boleh kosong",
-                        style: TextStyle(color: Colors.red),
-                      ),
-                    ),
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Tanggal tidak boleh kosong';
+                      }
+                    }
+                  ),
                     const SizedBox(height: 16),
                   DropdownButtonFormField<String>(
                     value: jenistransaksiController.text.isNotEmpty
@@ -254,6 +261,43 @@ class _DataBarangPageState extends State<DataBarangPage> {
                         ),
                       ),
                      ],
+                  ),
+                  const SizedBox(height: 40),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      ElevatedButton(
+                        onPressed: () {
+                        if (_formKey.currentState!.validate()){
+                        // Navigator.push(
+                        //   context,
+                        //   MaterialPageRoute(
+                        //     builder: (context) => DetailPelangganPage(
+                        //       nama: namaController.text,
+                        //       email: emailController.text,
+                        //       noHP: noHPController.text,
+                        //       alamat: alamatController.text,
+                        //       provinsi: provinsiController.text,
+                        //       kodepos: kodeController.text,
+                        //     ),
+                        //   ),
+                        // );
+                      }},
+                       style: ElevatedButton.styleFrom(
+                              fixedSize: Size(425, 60), 
+                              backgroundColor: const Color.fromARGB(255, 231, 80, 39),
+                              foregroundColor: Colors.white,
+                              textStyle: const TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(15),
+                              ),
+                              padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 15),
+                            ),
+                            child: const Text('Simpan'),
+                      ),
+                    ],
                   ),
                 ],
               ),
