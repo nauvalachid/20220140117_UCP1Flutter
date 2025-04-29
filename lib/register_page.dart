@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ucp1/homepage.dart';
 import 'package:ucp1/login_page.dart';
 
 class RegisterPage extends StatefulWidget {
@@ -246,10 +247,9 @@ class _RegisterPageState extends State<RegisterPage> {
                             duration: Duration(seconds: 3),
                           ),
                         );
-                        // Pindah ke halaman login setelah registrasi berhasil
                       Navigator.pushReplacement(
                       context,
-                      MaterialPageRoute(builder: (context) => const LoginPage()),
+                      MaterialPageRoute(builder: (context) => HomePage(email: emailController.text)),
                     );
                       }
                     }
